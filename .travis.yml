@@ -19,3 +19,6 @@ after_success:
     # call codecov from project root
     - if [[ $TRAVIS_PYTHON_VERSION != nightly ]]; then codecov; fi
 
+matrix:
+  allow_failures:
+    - python: nightly
