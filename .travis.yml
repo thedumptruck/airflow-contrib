@@ -1,0 +1,23 @@
+# https://travis-ci.org/thedumptruck/airflow-contrib
+language: python
+python:
+    - 2.7.8
+    - 2.7
+    - pypy
+    - 3.3
+    - 3.4
+    - 3.5
+    - nightly
+    - pypy3
+
+install:
+  - travis_retry pip install .
+  - travis_retry pip install codecov
+
+script:
+  - python tests/basic.py
+
+after_success:
+    # call codecov from project root
+    - if [[ $TRAVIS_PYTHON_VERSION != nightly ]]; then codecov; fi
+
