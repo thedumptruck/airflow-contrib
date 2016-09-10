@@ -20,15 +20,12 @@
 from setuptools import setup, find_packages
 
 def run_setup():
-    setup(name='ECSRunTaskOperator',
-            description='TheDumpTruck Airflow ECS-RunTask Operator',
+    setup(name='AirflowOnTheDumpTruck',
+            description='AirflowOnTheDumptruck bunch of airflow operators and hooks',
             license='MIT License',
-            version='0.0.1-alpha-0',
+            version='0.0.1-alpha-1',
             packages=find_packages(),
-            install_requires=['airflow>=1.3.7', 'boto3>=1.0.0'],
-            extras_require={
-                'test': ['moto']
-            })
+            install_requires=['airflow>=1.3.7', 'boto3>=1.0.0'])
 
 if __name__ == "__main__":
     run_setup()
