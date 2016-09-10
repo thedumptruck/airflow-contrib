@@ -1,24 +1,27 @@
-# https://travis-ci.org/thedumptruck/airflow-contrib
 language: python
 python:
-    - 2.7.8
-    - 2.7
-    - 3.3
-    - 3.4
-    - 3.5
-    - nightly
-
+- 2.7.8
+- 2.7
+- 3.3
+- 3.4
+- 3.5
+- nightly
 install:
-  - travis_retry pip install .
-  - travis_retry pip install codecov
-
+- travis_retry pip install .
+- travis_retry pip install codecov
 script:
-  - coverage run tests/basic.py
-
+- coverage run tests/basic.py
 after_success:
-    # call codecov from project root
-    - if [[ $TRAVIS_PYTHON_VERSION != nightly ]]; then codecov; fi
-
+- if [[ $TRAVIS_PYTHON_VERSION != nightly ]]; then codecov; fi
 matrix:
   allow_failures:
-    - python: nightly
+  - python: nightly
+deploy:
+  provider: pypi
+  username:
+    secure: YSvOuar3qxh7NxFMzP3Pbg5wCsWbmSUh6Nyel/F4tlDMAbSuEJyBSTbIftksRRYm/WnB1eobUOFl/Xfr0hLQC038+eJeDC7aEUcKGAK1BQDQXaIs0DdYklX+z0AD2CmqjAe6qhVR2zHFn+frXcsjHmLqHmPFFSa7uR7WCZD1e4r4it7sgmUQLn+3u8jXTS0/DT7jOEc24jphekY+c2YWEmhMYY9rCnUdHdM5K/jHEzdeZGyLCUJ3XaRr6AXKiY9M9lg9LY0OBZ17uIjFCrh7OpD5Dm3mQrBBBQo0UX1tuU1WejVv6OD2IbZPHimWaRlNPid2REEw8DJ/9JjxgCLml6B0Jkk2WgaDa3knoRCNE6MoASCx9kFwz4lpEnPZUszc1bwzEZxsbQYcvZNUhy2q6337hyX3uO3JUc26kPn3oB8A6FVG+K1nV+KuSbSIaD+sGjzxPBjR2wlwcxqG3BXETZ8AZiLMOLpYFN5l3YCNEDSr2wNLjL8CKUamK2DvtZE+pelLo+A16eCEzTLZwkkJ85GxKMlBmoOZMfTtQFDonM87H3x5ztZqjNQZCCY/tDl8YFajjKcyi7FOMeCWxWM/Evl9PCOLw0SOfvsl/dNiLk/ROD2VRqI8nRJpZH9uFStBeT40fMzsFTiVO0Z3YEZmaT44vBeKfLNL0Mf4ewnqMNE=
+  password:
+    secure: k31acGbQwpxKlUrHEnTYF23wZUFzmszR5l0kNn67Dye9DZactI6Qcg0L1Z4AOkIbSeJm4nxXeNoIEoohAPnk7yyZZ/YCBAZOBwOa/2btprjruWSNNAWCwrnQwj4n1rwJ2K8SIfXAkeHZZVI5bv/1/Vu6Vm31uYNJqYh24+v9sYALYaUnBzmI+az0hfTHBk9buYKIg3qOjSAhWR9/mHevU+f96gaXABefLDoFnFQbCxy0ys7W30q9ArEvzpnZ5bobT6baBs0l9ru6/TP3zcLGZm5OxjNQ46Mk3QeJWBaJXWhxyCXWMFp7pDkxVUrO+P6ucgzRCNPnkJWlPUjzF4oZ7FHldbRechc6YXkgmYMUeV9pKDN7vhwOpkYJZnN5PaaJ7ckHLmLGQcGwTIn+KKohiqt9jhWvA/kO0r7E/Q6bPgk3vf8y/EePGm/knU+On//SizUd7WHoCwF2ISSzXgE6np9tqUxcR8g4XxZ7e1fLaAWGMW/EQxL52F6Qc5uiO1Y3SxjN12mgQKQOSv8l/gFhbj0GifaOYtHMmJPEdWX5H5xbbpHxDnzuyjiAxeIHKrgzNqo4+34WI/97cxqNN0V+HlcfqlUqGipflFXeUUqGI+f8xJSWm8peKVlIUk8cvrj6f5/20XnMHiiig4gz5iQu9YrpUc6quvKjI6M70YWtbIE=
+  on:
+    tags: true
+    repo: thedumptruck/airflow-contrib

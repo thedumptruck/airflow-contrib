@@ -23,7 +23,7 @@ def run_setup():
     setup(name='AirflowOnTheDumpTruck',
             description='AirflowOnTheDumptruck bunch of airflow operators and hooks',
             license='MIT License',
-            version='0.0.1-alpha-1',
+            version='0.1.0',
             packages=find_packages(),
             install_requires=['airflow>=1.3.7', 'boto3>=1.0.0'])
 
