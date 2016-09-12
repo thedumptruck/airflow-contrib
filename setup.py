@@ -19,13 +19,25 @@
 
 from setuptools import setup, find_packages
 
+_ecs         = ['boto3>=1.0.0']
+_iron_worker = ['iron-worker>=1.0.0']
+_all         = _ecs + _iron_worker
+
 def run_setup():
     setup(name='AirflowOnTheDumpTruck',
+            author='TheDumpTruck',
+            email='TheDumpTruck@EnvyGrid.com',
+            url='https://github.com/thedumptruck/airflow-contrib',
             description='AirflowOnTheDumptruck bunch of airflow operators and hooks',
             license='MIT License',
             version='0.1.0',
             packages=find_packages(),
-            install_requires=['airflow>=1.3.7', 'boto3>=1.0.0'])
+            install_requires=['airflow>=1.3.7'],
+            extras_require={
+                'ecs': _ecs,
+                'iron_worker': _iron_worker,
+                'all': _all
+            })
 
 if __name__ == "__main__":
     run_setup()
